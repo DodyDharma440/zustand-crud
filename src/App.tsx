@@ -1,10 +1,17 @@
 import React from "react";
+import { Container, Input, ListItem } from "components";
+import { usePeopleStore } from "store";
 
-const App = () => {
+const App: React.FC = () => {
+  const { peoples } = usePeopleStore();
+
   return (
-    <div className="App">
-      <button className="px-4 py-2 bg-indigo-400">Tailwind</button>
-    </div>
+    <Container>
+      <Input />
+      {peoples.map((person, index) => (
+        <ListItem data={person} index={index} key={index} />
+      ))}
+    </Container>
   );
 };
 
